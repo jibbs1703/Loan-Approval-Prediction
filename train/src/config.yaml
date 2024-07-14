@@ -1,0 +1,50 @@
+OBJECTS:
+  - Gender
+  - Married
+  - Dependents
+  - Education
+  - Self_Employed
+  - Property_Area
+  - Credit_History
+
+NON_OBJECTS:
+  - ApplicantIncome
+  - CoapplicantIncome
+  - LoanAmount
+  - Loan_Amount_Term
+
+TARGET:
+  Loan_Status
+
+NUMERICAL_COLUMNS:
+  - Loan_Amount_Term
+  - Total_Income
+  - Payment
+  - Debt_Income
+
+CATEGORICAL_COLUMNS:
+  - Gender
+  - Married
+  - Dependents
+  - Education
+  - Self_Employed
+  - Property_Area
+  - Credit_History
+
+TEST_SIZE:
+  0.2
+
+MODEL_NAME:
+  Loan_Prediction_Model.pkl
+
+MODEL_BUCKET:
+  jibbs-models
+
+BEST_MODEL_PARAMS:
+  random_state : 420
+  n_estimators : 100
+  colsample_bytree : 0.7
+  gamma : 0.0
+  learning_rate : 0.2
+  max_depth : 12
+  min_child_weight : 1
