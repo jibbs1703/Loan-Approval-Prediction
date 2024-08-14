@@ -1,0 +1,25 @@
+Loan_ID: A unique identification number for each loan application.
+
+Gender: The gender of the applicant (Male or Female).
+
+Married: The marital status of the applicant (Yes or No).
+
+Dependents: The number of dependents of the applicant (0, 1, 2, or 3+).
+
+Education: The level of education of the applicant (Graduate or Not Graduate).
+
+Self_Employed: Whether the applicant is self-employed or not (Yes or No).
+
+ApplicantIncome: The monthly income of the applicant.
+
+CoapplicantIncome: The monthly income of the co-applicant.
+
+LoanAmount: The loan amount requested (in thousands).
+
+Loan_Amount_Term: The term of the loan, in months.
+
+Credit_History: A binary variable representing the applicant’s credit history (1 if they have a credit history that meets the guidelines, 0 otherwise).
+
+Property_Area: The category of the property area where the applicant resides (Urban, Semiurban, or Rural).
+
+Loan_Status: The final decision on the loan application (Y for approved, N for not approved).

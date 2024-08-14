@@ -9,29 +9,12 @@ declined based on a set of features.
 
 In this project, a loan approval classification model is developed to evaluate a credit/loan applicant’s 
 ability and willingness to repay a loan. The model approves or declines an applicant's application once 
-the applicant's information is entered , speeding up the loan underwriting process. 
+the applicant's information is entered, streamlining the loan approval process, making the loan underwriting
+process more efficient for financial institutions and improving the user experience for loan applicants.
 
-The model deployment is done using FastAPI, allowing API endpoints to be created. The model is deployed in a
-docker container, leveraging cloud resources(AWS EC2 for computing and AWS S3 Bucket for data warehousing) 
-for deployment. 
-
-## Requirements
-- Python 3.11
-- Jenkins
-- Docker
-- Cloud platform account (AWS)
-
-## Installation
-- Clone the repository:
-```
-git clone https://github.com/jibbs1703/Loan-Approval-Prediction.git
-cd Loan-Approval-Prediction
-```
-
-- Install Python dependencies:
-```
-pip install -r requirements.txt
-```
+The model deployment is done using a FastAPI backend and a Reflex frontend. The model is deployed in a
+docker container, while also leveraging cloud resources(AWS EC2 for computing and AWS S3 Bucket for data
+warehousing).
 
 ## Data Management
 
@@ -42,4 +25,7 @@ pip install -r requirements.txt
 ## Model Evaluation
 
 ## Model Deployment
+
+The application is containerized and deployed on an AWS EC2 instance, providing availability and reliability of the 
+application for users. 
 

@@ -10,3 +10,5 @@ joblib~=1.4.0
 python-dotenv~=1.0.1
 pydantic~=2.8.2
 fastapi~=0.109.2
+yaml~=0.2.5
+reflex~=0.5.8

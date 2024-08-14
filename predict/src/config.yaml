@@ -1,11 +1,8 @@
-TARGET:
-  Loan_Status
-
 NUMERICAL_COLUMNS:
   - Loan_Amount_Term
-  - Total_Income
-  - Payment
-  - Debt_Income
+  - total_income
+  - payment
+  - debt_income
 
 CATEGORICAL_COLUMNS:
   - Gender
@@ -17,9 +14,10 @@ CATEGORICAL_COLUMNS:
   - Credit_History
 
 MODEL_NAME:
-  Loan_Prediction_Model.pkl
+  loan-prediction-model.pkl
 
-MODEL_BUCKET:
-  jibbs-models
+CAT_ENCODER:
+  loan-prediction-encoder.pkl
 
-
+NUM_SCALER:
+  loan-prediction-scaler.pkl

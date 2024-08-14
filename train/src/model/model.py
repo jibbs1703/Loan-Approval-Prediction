@@ -2,8 +2,8 @@ import pandas as pd
 from imblearn.over_sampling import SMOTENC
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
 import yaml
+import pickle
 from train.src.helper.aws_services import S3Buckets
 
 # Access Config.yaml File For Training Package to Access Saved Parameters For Model Training
@@ -42,13 +42,16 @@ class ModelTrain:
     def model_training(self, X_train, y_train):
 
         # Instantiate Model and Fit to Training Data
-        #algorithm = XGBClassifier(**yaml_file['BEST_MODEL_PARAMS'])
         algorithm = RandomForestClassifier(random_state = 420)
         algorithm.fit(X_train, y_train)
 
-        # Save the Fitted Model To S3 Bucket
+        # Save the Fitted Model To S3 Bucket/ Application Directory
         s3 = S3Buckets.credentials('us-east-2')
         s3.save_model_to_s3(algorithm, yaml_file['MODEL_BUCKET'], yaml_file['MODEL_NAME'])
+
+        # To Application Directory
+        filename = f"objects/{yaml_file['MODEL_NAME']}"
+        pickle.dump(algorithm, open(filename, 'wb'))
 
         # Return the Fitted Model
         return algorithm
