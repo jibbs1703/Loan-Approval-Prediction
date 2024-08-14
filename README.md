@@ -12,9 +12,8 @@ ability and willingness to repay a loan. The model approves or declines an appli
 the applicant's information is entered, streamlining the loan approval process, making the loan underwriting
 process more efficient for financial institutions and improving the user experience for loan applicants.
 
-The model deployment is done using a FastAPI backend and a Reflex frontend. The model is deployed in a
-docker container, while also leveraging cloud resources(AWS EC2 for computing and AWS S3 Bucket for data
-warehousing).
+The model deployment is done using a FastAPI and is deployed in a docker container, while also leveraging cloud
+resources(AWS EC2 for computing and AWS S3 Bucket for data warehousing).
 
 ## Data Management
 
@@ -24,8 +23,12 @@ warehousing).
 
 ## Model Evaluation
 
+The loan classification model was evaluated to assess its performance on predicting the approval status of an
+applicant's loan application. The goal was to ensure that the model not only performs well on the training data but
+also generalizes effectively to unseen data.
+
 ## Model Deployment
 
 The application is containerized and deployed on an AWS EC2 instance, providing availability and reliability of the 
-application for users. 
+application for getting loan approval predictions. 
 
