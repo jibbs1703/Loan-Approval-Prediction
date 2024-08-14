@@ -1,4 +1,5 @@
 from sklearn.preprocessing import MinMaxScaler
+from train.src.helper.aws_services import S3Buckets
 from category_encoders import TargetEncoder
 import yaml
 
@@ -23,9 +24,9 @@ class Transformation:
             self.df[col] = self.df[col].fillna(self.df[col].mode()[0])
 
     def create_features(self):
-        self.df['Total_Income'] = (self.df.ApplicantIncome + self.df.CoapplicantIncome)
-        self.df['Payment'] = (self.df.LoanAmount / self.df.Loan_Amount_Term)
-        self.df['Debt_Income'] = (self.df.LoanAmount/ self.df.ApplicantIncome)
+        self.df['total_income'] = (self.df.ApplicantIncome + self.df.CoapplicantIncome)
+        self.df['payment'] = (self.df.LoanAmount / self.df.Loan_Amount_Term)
+        self.df['debt_income'] = (self.df.LoanAmount/ self.df.ApplicantIncome)
 
     def drop_columns(self):
         # Make the Loan_ID column the dataframe index and Drop the Loan_ID column
@@ -38,20 +39,23 @@ class Transformation:
 
     def scale_numeric(self):
         num_cols = yaml_file['NUMERICAL_COLUMNS']
-        self.mms = MinMaxScaler().fit(self.df[num_cols])
-        self.df[num_cols] = self.mms.transform(self.df[num_cols])
+        mms = MinMaxScaler()
+        mms.fit(self.df[num_cols])
+        self.df[num_cols] = mms.transform(self.df[num_cols])
+
+        # Save the Fitted Encoder To S3 Bucket
+        s3 = S3Buckets.credentials('us-east-2')
+        s3.save_model_to_s3(mms, yaml_file['MODEL_BUCKET'], yaml_file['NUM_SCALER'])
 
     def encode_categorical(self):
         # Instantiate Target Encoder and Target-Encode the Categorical Features
         cat_cols = yaml_file['CATEGORICAL_COLUMNS']
-        self.enc = TargetEncoder().fit(self.df[cat_cols], self.df[yaml_file['TARGET']])
-        self.df[cat_cols] = self.enc.transform(self.df[cat_cols], self.df[yaml_file['TARGET']])
+        enc = TargetEncoder().fit(self.df[cat_cols], self.df[yaml_file['TARGET']])
+        self.df[cat_cols] = enc.transform(self.df[cat_cols], self.df[yaml_file['TARGET']])
 
-    def scaler_encoder(self):
-        scaler = self.mms
-        encoder = self.enc
-        return scaler, encoder
-
+        # Save the Fitted Encoder To S3 Bucket
+        s3 = S3Buckets.credentials('us-east-2')
+        s3.save_model_to_s3(enc, yaml_file['MODEL_BUCKET'], yaml_file['CAT_ENCODER'])
 
     def run_pipeline(self):
         self.fill_missing()
