@@ -11,15 +11,15 @@ In this project, a loan approval classification model is developed to evaluate a
 ability and willingness to repay a loan. The model approves or declines an applicant's application once 
 the applicant's information is entered , speeding up the loan underwriting process. 
 
-The model is continuously integrated and deployed automatically by leveraging server-dependent resources
-(Jenkins and Ansible) and cloud resources(AWS EC2 and AWS S3 Bucket).
+The model deployment is done using FastAPI, allowing API endpoints to be created. The model is deployed in a
+docker container, leveraging cloud resources(AWS EC2 for computing and AWS S3 Bucket for data warehousing) 
+for deployment. 
 
 ## Requirements
 - Python 3.11
 - Jenkins
 - Docker
 - Cloud platform account (AWS)
-- .env file with AWS account credentials (Secret key and Access Key)
 
 ## Installation
 - Clone the repository:

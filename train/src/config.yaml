@@ -18,9 +18,9 @@ TARGET:
 
 NUMERICAL_COLUMNS:
   - Loan_Amount_Term
-  - Total_Income
-  - Payment
-  - Debt_Income
+  - total_income
+  - payment
+  - debt_income
 
 CATEGORICAL_COLUMNS:
   - Gender
@@ -35,7 +35,13 @@ TEST_SIZE:
   0.2
 
 MODEL_NAME:
-  Loan_Prediction_Model.pkl
+  loan-prediction-model.pkl
+
+CAT_ENCODER:
+  loan-prediction-encoder.pkl
+
+NUM_SCALER:
+  loan-prediction-scaler.pkl
 
 MODEL_BUCKET:
   jibbs-models

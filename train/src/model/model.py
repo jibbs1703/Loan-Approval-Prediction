@@ -14,10 +14,12 @@ with open('train/src/config.yaml', 'r') as file:
 class ModelInputs:
     def __init__(self, df):
         self.df = df
+
     def target_feature_split(self):
         X = self.df.drop(yaml_file['TARGET'], axis=1)
         y = self.df[yaml_file['TARGET']]
         return X, y
+
     def target_balancer(self, X, y):
         cat_cols = yaml_file['CATEGORICAL_COLUMNS']
         smote_nc = SMOTENC(categorical_features = cat_cols, random_state=420)
