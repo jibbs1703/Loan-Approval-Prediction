@@ -43,3 +43,7 @@ else :
 
     metrics = ModelMetrics(test_target, test_prediction)
     print(metrics.accuracy())
+    print(metrics.roc_auc())
+    print(metrics.recall())
+    print(metrics.precision())
+    print(metrics.f1_score())
