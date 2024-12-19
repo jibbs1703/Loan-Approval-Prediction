@@ -7,7 +7,7 @@ import warnings
 import yaml
 warnings.filterwarnings('ignore')
 
-with open('predict/src/config.yaml', 'r') as file:
+with open('deploy/src/config.yaml', 'r') as file:
     yaml_file = yaml.safe_load(file)
 
 s3 = S3Buckets.credentials('us-east-2')

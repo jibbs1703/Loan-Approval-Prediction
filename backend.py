@@ -65,7 +65,7 @@ def home():
 
 
 # Create Prediction Path
-@app.post("/predict")
+@app.post("/deploy")
 def predict(features: Features = Depends()):
     data = features.dict()
     data.pop('LoanAmount')
